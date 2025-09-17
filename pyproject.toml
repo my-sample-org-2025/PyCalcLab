@@ -1,0 +1,103 @@
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pycalclab"
+dynamic = ["version"]
+description = "A comprehensive Python engineering calculator library"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "PyCalcLab Contributors", email = "contributors@pycalclab.org"},
+]
+maintainers = [
+    {name = "PyCalcLab Contributors", email = "contributors@pycalclab.org"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education", 
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Education",
+]
+keywords = ["calculator", "engineering", "mathematics", "science", "computation"]
+dependencies = [
+    "numpy>=1.21.0",
+    "scipy>=1.7.0", 
+    "sympy>=1.9.0",
+    "matplotlib>=3.5.0",
+]
+requires-python = ">=3.7"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=6.0",
+    "pytest-cov>=2.0",
+    "black>=22.0",
+    "flake8>=4.0",
+    "mypy>=0.910",
+]
+docs = [
+    "sphinx>=4.0",
+    "sphinx-rtd-theme>=1.0",
+]
+gui = [
+    "PyQt5>=5.15.0",
+]
+visualization = [
+    "plotly>=5.0.0",
+    "bokeh>=2.4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/my-sample-org-2025/PyCalcLab"
+Documentation = "https://pycalclab.readthedocs.io/"
+Repository = "https://github.com/my-sample-org-2025/PyCalcLab"
+"Bug Tracker" = "https://github.com/my-sample-org-2025/PyCalcLab/issues"
+
+[project.scripts]
+pycalclab = "pycalclab.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools_scm]
+write_to = "src/pycalclab/_version.py"
+
+[tool.black]
+line-length = 88
+target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.mypy]
+python_version = "3.7"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q --strict-markers"
+testpaths = [
+    "tests",
+]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
